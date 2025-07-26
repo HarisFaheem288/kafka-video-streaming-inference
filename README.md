@@ -1,4 +1,3 @@
-# ML-Engineer-Eval-Task
 # Real-Time Image Classification System
 
 A complete pipeline for real-time image classification using Kafka, gRPC and PyTorch (ResNet18) with ONNX optimization, containerized with Docker.
