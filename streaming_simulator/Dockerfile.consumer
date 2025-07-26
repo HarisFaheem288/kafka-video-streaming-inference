@@ -1,0 +1,24 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    && rm -rf /var/lib/apt/lists/*
+    
+# Copy from root directory
+COPY requirements_consumer.txt .
+COPY streaming_simulator/consumer.py .
+
+# Copy proto file and generate stubs
+COPY streaming_simulator/grpc_interface.proto .
+
+RUN pip install --no-cache-dir -r requirements_consumer.txt && \
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. grpc_interface.proto
+
+CMD ["streamlit","run", "consumer.py"]
