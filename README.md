@@ -65,7 +65,7 @@ Access Streamlit Dashboard at this URL:
 http://localhost:8501
 ```
 
-![Streamlit Dashboard](images/streamlit_app (1).png)  
+![Streamlit Dashboard](streamlit_app (1).png)  
 *Streamlit dashboard showing real-time classification results*
 
 ## Health and Metrices of the Docker gPRC service
